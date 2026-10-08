@@ -1,0 +1,168 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        input[type="reset"] {
+            background-color: #dc3545;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <script>
+        function validateform() {
+
+            var name = document.forms["regform"]["Name"].value;
+            var email = document.forms["regform"]["Email"].value;
+            var phone = document.forms["regform"]["Telephone"].value;
+            var empid = document.forms["regform"]["Empid"].value;
+            var password = document.forms["regform"]["Password"].value;
+            var address = document.forms["regform"]["Address"].value;
+
+            if (name == "") {
+                alert("Please enter your name.");
+                return false;
+            }
+
+            if (empid == "" || isNaN(empid)) {
+                alert("Please enter a valid Employee ID.");
+                return false;
+            }
+
+            if (email == "") {
+                alert("Please enter a valid e-mail address.");
+                return false;
+            }
+
+            if (phone == "") {
+                alert("Please enter your phone number.");
+                return false;
+            }
+
+            if (phone.length !== 10 || isNaN(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            if (password == "") {
+                alert("Please enter your password.");
+                return false;
+            }
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+
+            if (address == "") {
+                alert("Please enter your address.");
+                return false;
+            }
+
+            alert("Details sent successfully!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Employee Registration Form</h1>
+
+        <form name="regform" onsubmit="return validateform()" method="post">
+
+            <label for="Empid">Employee ID:</label>
+            <input type="text" name="Empid" id="Empid">
+
+            <label for="Name">Name:</label>
+            <input type="text" name="Name" id="Name">
+
+            <label for="Address">Address:</label>
+            <input type="text" name="Address" id="Address">
+
+            <label for="Email">E-mail Address:</label>
+            <input type="text" name="Email" id="Email">
+
+            <label for="Password">Password:</label>
+            <input type="password" name="Password" id="Password">
+
+            <label for="Telephone">Phone Number:</label>
+            <input type="text" name="Telephone" id="Telephone">
+
+            <label for="Subject">SELECT YOUR COURSE</label>
+
+            <select name="Subject" id="Subject">
+                <option value="">Select</option>
+                <option value="BTECH">BTECH</option>
+                <option value="BCA">BCA</option>
+                <option value="B.COM">B.COM</option>
+            </select>
+
+            <label for="Comment">Comments:</label>
+
+            <textarea name="Comment" id="Comment" cols="30" rows="5"></textarea>
+
+            <input type="submit" value="Send" name="Submit">
+
+            <input type="reset" value="Reset" name="Reset">
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
+```

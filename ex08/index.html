@@ -1,0 +1,134 @@
+```html
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Payroll Management System</title>
+
+    <!-- AngularJS Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
+
+    <style>
+
+        .checkbox {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+
+</head>
+
+<body ng-controller="myCtrl">
+
+    <div>
+
+        <label for="hike">Percentage:</label>
+
+        <input
+            type="number"
+            id="hike"
+            ng-model="hike"
+        />
+
+        <button ng-click="hikeSal()">
+            Hike the salary
+        </button>
+
+    </div>
+
+
+    <div>
+
+        <h3>Hike by dept:</h3>
+
+        <div
+            class="checkbox"
+            ng-repeat="dept in departments track by $index"
+        >
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    ng-model="dept.selected"
+                    ng-click="sortEmp(dept.id)"
+                />
+
+                {{dept.name}}
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <table border="1">
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+
+                <th>Dept</th>
+
+                <th>Hike Percentage</th>
+
+                <th>Hike Amount</th>
+
+                <th>Salary</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <tr
+                ng-repeat="emp in empFiltered track by $index"
+            >
+
+                <td>{{emp.name}}</td>
+
+                <td>{{emp.dept}}</td>
+
+                <td>{{emp.hike}}</td>
+
+                <td>{{emp.hikeAmt}}</td>
+
+                <td>{{emp.sal | currency: '₹ '}}</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>
+```
